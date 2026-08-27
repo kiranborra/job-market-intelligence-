@@ -1,65 +1,46 @@
-﻿# Job Market Intelligence Dashboard
+﻿# 📊 Job Market Intelligence Dashboard
 
-### Where are the data roles, and what do they actually ask for?
-
-An end-to-end data pipeline that collects, cleans, and analyzes **2,588 job postings** from the Adzuna API to answer the most pressing questions for junior data professionals: *How open is the market, and which skills actually matter?*
+An end-to-end data pipeline that collects, cleans, and analyzes **2,588 job postings** from the Adzuna API. This project decodes the current Indian data job market to help junior professionals bridge the gap between their skills and industry expectations.
 
 Built with Python, SQL, and Power BI.
 
-![Dashboard Preview](assets/dashboard-page1.png)
+---
+
+## 📊 Project Visuals
+
+### Page 1: The Hiring Landscape
+*Focuses on seniority, entry-level share, and top employers.*
+![Breaking In Dashboard](assets/dashboard-page1.png)
+
+### Page 2: Skill Intelligence
+*The Role x Skill Matrix – see which tools unlock which roles.*
+![Skill Matrix Dashboard](assets/dashboard-page2.png)
 
 ---
 
-## 🚀 Key Findings
-
-**1. The "Junior" Barrier**
-The market is highly competitive. Out of **2,588 raw postings**, only a small fraction are explicitly open to junior/intern candidates. This dashboard helps you identify exactly which roles (e.g., Data Analyst vs. Data Engineer) offer the best entry points.
-
-**2. Role-Specific Skill Profiles**
-The market confirms that "Data Roles" are not one-size-fits-all. Our analysis reveals signature tools for each career path:
-
-| Role Family | Signature Skill |
-|---|---|
-| **Data Engineer** | ETL |
-| **Business Intelligence** | Power BI |
-| **Data Scientist** | Machine Learning |
-| **Data Analyst** | SQL |
-
-**3. Geographic & Corporate Concentration**
-The data shows significant clusters in specific cities and a high dependency on a few major employers. This dashboard helps you pinpoint where to focus your job-hunting efforts.
+## 💡 Why This Project?
+The data job market is often opaque. By scraping and analyzing live postings from the Adzuna API, this project identifies:
+*   **The "Junior" Barrier:** How few roles are actually entry-level (3.1%).
+*   **Role DNA:** Exactly which tools—from ETL to ML—are required for specific career paths.
+*   **Market Concentration:** Insights into the top hiring companies and city clusters.
 
 ---
 
-## 📊 The Dashboard Experience
-
-*   **Page 1: Breaking In**
-    *   Headline KPIs (Total postings, seniority distribution, company diversity).
-    *   Entry-level opportunities by role family.
-    *   Top 10 most in-demand skills overall.
-
-*   **Page 2: The Skill Matrix**
-    *   A deep-dive visualization mapping roles to their required technologies.
-    *   Regional hiring trends and top hiring companies.
+## 🚀 Key Insights
+| Role Family | Signature Skill | Market Reality |
+|---|---|---|
+| **Data Engineer** | ETL | Highly specialized; tech-heavy. |
+| **Business Intelligence**| Power BI | Driven by reporting efficiency. |
+| **Data Scientist** | Machine Learning | High barrier to entry. |
+| **Data Analyst** | SQL | The most accessible entry point. |
 
 ---
 
-## 🛠 Project Architecture
-
-```mermaid
-graph LR
-    A[Adzuna API] -->|Fetch| B(collect.py)
-    B -->|Clean| C(clean.py)
-    C -->|Tag| D(extract_skills.py)
-    D -->|Store| E(load_db.py)
-    E -->|Analyze| F(queries.sql)
-    F -->|Visualize| G[Power BI Report]
-```
-
-### Pipeline Details
-1.  **Fetch:** Aggregates live postings (API).
-2.  **Clean:** Normalizes company names, locations, and classifies seniority.
-3.  **Tag:** Uses a 44-skill taxonomy with custom regex extraction.
-4.  **Analyze:** Performs SQL-based analysis to determine skill reach and hiring trends.
+## 🛠 Tech Stack
+*   **Data Pipeline:** Python (`pandas`, `requests` for API scraping)
+*   **Data Processing:** SQL (`SQLite`) for cleaning & querying
+*   **Visualization:** Power BI (DAX, Interactive Dashboards)
+*   **Automation:** End-to-end ETL scripts
 
 ---
 
@@ -72,7 +53,7 @@ graph LR
 ### Steps
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/kiranborra/job-market-intelligence.git
    cd job-market-intelligence
    ```
 2. **Setup environment:**
@@ -92,16 +73,15 @@ graph LR
    python analyze.py
    ```
 5. **Visualize:**
-   *   Open `dashboard/job_market_dashboard.pbix` in Power BI Desktop. It connects directly to the processed CSV exports in `data/exports/`.
+   *   Open `dashboard/job_market_dashboard.pbix` in Power BI Desktop to view the reports using the exported CSV files.
 
 ---
 
 ## ⚠️ Caveats & Insights
 *   **API Limits:** Postings are truncated; counts represent "mentioned in posting" (a reliable signal for comparison, not an absolute demand count).
 *   **Survivorship Bias:** Posting volume trends include expired listings; the dashboard focuses on fresh hiring data.
-*   **Salary Data:** Excluded due to low reporting rates (6–7% of listings), ensuring the dashboard relies only on high-confidence data.
+*   **Salary Data:** Excluded due to low reporting rates, ensuring the dashboard relies only on high-confidence data.
 
 ---
 
-## Tech Stack
-Python (`pandas`, `requests`) · SQL (`SQLite`) · Power BI (`DAX`) · Git
+*Built for the Data Analytics Community.*
